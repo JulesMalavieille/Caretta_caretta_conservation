@@ -8,23 +8,24 @@ Created on Wed Mar 19 14:55:02 2025
 import numpy as np
 import matplotlib.pyplot as plt
 
-P1 = 0.0    # Valeur du modele = 0.0
+P1 = 0.0    # model value = 0.0
 G1 = 0.6747  # 0.6447
-P2 = 0.7476  # Valeur du modele : 0.7476
+P2 = 0.7476  # model value : 0.7476
 G2 = 0.0381  #0.0381
-P3 = 0.6619  # Valeur du modèle : 0.6619
+P3 = 0.6619  # model value : 0.6619
 G3 = 0.0137  # 0.0137
-P4 = 0.7006  # Valeur du modèle : 0.7006
+P4 = 0.7006  # model value : 0.7006
 G4 = 0.0452  # 0.0452
-P5 = 0.0   # Valeur du modèle : 0.0
+P5 = 0.0   # model value : 0.0
 G5 = 0.8091   # 0.8091
-P6 = 0.0   # Valeur du modèle : 0.0
+P6 = 0.0   # model value : 0.0
 G6 = 0.8091   # 0.8091
-P7 = 0.8084   # Valeur du modèle : 0.8084
+P7 = 0.8084   # model value : 0.8084
 F5 = 127
 F6 = 4
 F7 = 80
 
+# The Leslie matrix
 L = np.array([[0,0,0,0,F5,F6,F7],
               [G1,P2,0,0,0,0,0],
               [0,G2,P3,0,0,0,0],
@@ -36,10 +37,11 @@ L = np.array([[0,0,0,0,F5,F6,F7],
 val, vec = np.linalg.eig(L)
 val_max = max(np.real(val))
 
+# Growth rate of turtle
 r = np.log(val_max)
 print(r)
 
-a = np.argmax(val)  # recurpere indice de la valeur max de val
+a = np.argmax(val)  # index of max value of eigenvalues
 vec_d = vec[:,a]
 som = np.sum(vec_d)
 prop = (vec_d/som)*100
